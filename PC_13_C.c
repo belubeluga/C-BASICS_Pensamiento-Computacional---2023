@@ -304,3 +304,64 @@ directivas (no incluyen instructivos)
 */
 
 //CONVERSION AUTOMATICA de tipos
+
+
+/*
+Los secretos de printf()
+------------------------
+\ escapar el siguiente caracter
+\\ imprimir una barra invertida
+" comienzo o fin de cadena
+\" imprimir comillas dobles
+’ comienzo o fin de una constante de caracter
+\’ imprimir comilla simple
+% comenzar especificaci´on de formato
+\% imprimir un signo de porcentaje
+
+\a alerta auditiva (campana -bell-)
+\b retroceso
+\f form feed
+\n nueva línea
+\r retorno de carro
+\t tabulacíon
+\v tabulacíon vertical
+
+%c imprimir un car´acter
+%d un n´umero decimal (base 10)
+%e un N.o de punto flotante exponencial
+%f un N.o de punto flotante
+%g un N.o de punto flotante en formato general
+%i un entero en base 10
+%o un N.o en octal (base 8)
+%s una cadena de caracteres
+%u un N.o decimal no signado (base 10)
+%x un N.o en hexadecimal (base 16)
+%% un signo porcentaje (tambi´en funciona \%)
+
+%5d estaba garantizado que el n´umero ocupara cinco espacios
+("%5d",0) 00000 o ****0 o $$$$0 pero en gral va con espacios
+("%5d",-7) 000-7
+("%05d",-7) -0007 rellena con 0
+("%-5d",0) 0****
+("%-5d",-7) -7***
+("%5d",1560133635) 1560133635
+("%5d",-2035065302) -2035065302
+
+Para imprimir un n´umero con un ancho de 5 espacios y con su signo el especificador de formato es
+%+5d. Ejemplos:
+printf imprime
+("%+5d",0) 000+0
+("%+-5d",0) +0***
+
+("% -5d",0) _0 ___
+
+BANDERAS:
+  ninguna alinea a derecha, con espacios
+- justifica a izquierda
+0 rellena con ceros
++ con un signo m´as en n´umeros positivos
+ signo m´as invisible
+
+IMPRIMIR CADENAS:
+%s permite la impresi´on de una cadena
+*/
