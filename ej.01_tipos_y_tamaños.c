@@ -203,7 +203,7 @@ INT_MIN, INT_MAX, RAND_MAX y UINT_MAX. ¿En qué encabezados se encuentran estas
 #include <stdio.h>
 #include <limits.h> // los limites
 #include <stdlib.h> // rand_max
-
+/*
 int main() {
     printf("Valor mínimo de int: %d\n", INT_MIN);
     printf("Valor máximo de int: %d\n", INT_MAX);
@@ -211,7 +211,8 @@ int main() {
     printf("Valor máximo de unsigned int: %u\n", UINT_MAX);
 
     return 0;
-}
+}*/
+
 /*Valor mínimo de int: -2147483648
 Valor máximo de int: 2147483647
 Valor máximo de rand: 2147483647
@@ -229,3 +230,121 @@ Con signo, sea positivo o negativo.
 Con 4 decimales, en ancho fijo de 10 caracteres, con signo y alineado a derecha.
 
 */
+/*
+int main(void){
+    printf("numero con 2 decimales: %.2f\n",2.3456);
+    printf("numero con 3 decimales: %.3f\n",2.3456);
+    printf("numero con signo: %+f\n",-2.3456);
+    printf("numero con 4 decimales, en ancho fijo de 10 caracteres, con signo y alineado a derecha: %+010.4f\n",2.3456);//predeterminado alineado a la derecha
+    return 0;
+}*/
+
+/*
+EJERCICIO 14
+------------
+El estándar C99 define varios tipos de enteros 1 distintos en el encabezado stdint.h (e inttypes.h).
+
+Busque qué tipos se encuentran definidos en dicho encabezado y lístelos.
+int8_t - Entero de 8 bits con signo.
+uint8_t - Entero de 8 bits sin signo.
+int16_t - Entero de 16 bits con signo.
+uint16_t - Entero de 16 bits sin signo.
+int32_t - Entero de 32 bits con signo.
+uint32_t - Entero de 32 bits sin signo.
+int64_t - Entero de 64 bits con signo.
+uint64_t - Entero de 64 bits sin signo.
+
+ tipos definidos para enteros con ancho mínimo garantizado:
+
+int_least8_t
+uint_least8_t
+int_least16_t
+uint_least16_t
+int_least32_t
+uint_least32_t
+int_least64_t
+uint_least64_t
+
+ tipos para enteros rápidos de ancho mínimo:
+
+int_fast8_t
+uint_fast8_t
+int_fast16_t
+uint_fast16_t
+int_fast32_t
+uint_fast32_t
+int_fast64_t
+uint_fast64_t
+
+¿Qué utilidad cree que pueden tener dichos tipos?
+son útiles para escribir código portátil que dependa de tamaños específicos de enteros, 
+garantizando la portabilidad del código entre diferentes plataformas y arquitecturas. 
+Además, estos tipos proporcionan claridad en el código sobre el tamaño exacto de los enteros, 
+lo que puede ser crucial en situaciones donde el tamaño de los datos es crítico
+*/
+
+/*
+EJERCICIO 15
+------------
+Escribí una función que imprima tu nombre, apellido y legajo. 
+La misma no recibe argumentos (porque es siempre tu nombre, apellido y legajo).
+
+Nombre: Nicasio
+Apellido: Maciel
+Legajo: 123456
+Utilice 3 llamadas a puts(),
+Utilice 1 llamada a puts(),
+Utilice 3 llamadas a printf().
+La firma (o prototipo) de la función debe ser: void mensaje(void);*/
+/*
+int main(void){
+    char Nombre[20] = "Nicasio";
+    char Apellido[20] = "Maciel";
+    char Legajo[20] = "123456";
+    puts(Nombre);
+    puts(Apellido);
+    puts(Legajo);
+    printf("nombre: %s, apellido: %s, legajo: %s\n",Nombre,Apellido,Legajo); //LONG DECIMAL
+
+}*/
+
+/*
+EJERCICIO 16
+------------
+Implementar las siguientes funciones.
+
+long sumar(int a, int b),
+long restar(int a, int b),
+float multiplicar(int multiplicando, int multiplicador),
+double dividir(int dividendo, int divisor), y
+mod(): retorna el resto de una división.
+
+¿Por qué crees que se eligieron esos valores de retorno?
+
+Si ahora quisiéramos soportar operaciones en punto flotante, además de las operaciones con enteros ¿qué debería cambiar?
+*/
+
+long sumar(int a, int b){
+    return a + b;
+}
+long restar(int a, int b){
+    return a - b;
+}
+float multiplicar(int multiplicando, int multiplicador){
+    return multiplicando * multiplicador;
+}
+double dividir(int dividendo, int divisor){
+    return dividendo/divisor;
+}
+int mod(int dividendo, int divisor){
+    return dividendo%divisor;
+}
+
+int main(void){
+    printf("suma = %ld\n", sumar(1,1));
+    printf("resta = %ld\n", restar(4,2));
+    printf("multiplicacion = %f\n", multiplicar(2,3));
+    printf("division = %f\n", dividir(6,3));
+    printf("resto = %d\n",mod(6,4));
+    return 0;
+}
