@@ -1,5 +1,6 @@
 //(10 ejercicios)
 #include <stdio.h> ////IMP!!!
+
 /*
 EJERCICIO 1
 -----------
@@ -119,28 +120,228 @@ int main(void){
 
 
 //************************************************************************************
+//!terminar
 /*
 EJERCICIO 6
 -----------
+Escribir funciones que resuelvan los siguientes problemas:
+Dada una fecha, indicar los días que faltan hasta fin de año.
+Dada una fecha, indicar la cantidad de días transcurridos en ese año hasta esa fecha.
+Dadas dos fechas (día1, mes1, año1, día2, mes2, año2), indicar el tiempo transcurrido entre ambas, en años, meses y días.
 */
 
+//Dado un año indicar si es bisiesto.
+int bisiesto(int año){
+    if (año%4 == 0){
+        if (año%100 == 0){
+            if (año%400 == 0){
+                return 1;
+            }
+            return 0;
+        }
+        else {return 1;}
+    }
+    else {return 0;}
+}
+
+int es_bisiesto(int año) {
+    // Un año es bisiesto si es divisible por 4
+    // Pero no es bisiesto si es divisible por 100
+    // A menos que también sea divisible por 400
+    return (año % 4 == 0 && año % 100 != 0) || (año % 400 == 0);
+}
+
+//Dado un mes y un año, devolver la cantidad de días correspondientes.
+int cantidad_dias(int año, int mes, int dia){
+    int dias = 0;
+    if (mes>1){
+        dias += 31;
+    }
+    if (mes>2){
+        if (es_bisiesto(año)== 1){dias+=29;}
+        else{ dias += 28;}}
+    if (mes>3){
+        dias += 31;}
+    if (mes>4){
+        dias += 30;}
+    if (mes>5){
+        dias += 31;}
+    if (mes>6){
+        dias += 30;}
+    if (mes>7){
+        dias += 31;}
+    if (mes>8){
+        dias += 31;}
+    if (mes>9){
+        dias += 30;}
+    if (mes>10){
+        dias += 31;}
+    if (mes>11){
+        dias += 30;}
+    return dias + dia;
+    
+}
+//Dada una fecha (día, mes, año), indicar si es válida o no. (salteo)
+//Dada una fecha, indicar los días que faltan hasta fin de mes.
+int dias_hasta_fin_de_mes(int año, int mes, int dia){
+    if (mes>1){
+        return 31-dia;
+    }
+    if (mes>2){
+        if (es_bisiesto(año)== 1){return 29 - dia;}
+        else{ return 28 - dia;}}
+    if (mes<=7) {
+        if(mes%2 == 0){return 30 - dia;} 
+        else{return 31-dia;}
+    }
+    if (mes>7) {
+        if(mes%2 == 0){return 31 - dia;} 
+        else{return 30-dia;}
+    }
+    
+}
 
 /*
 EJERCICIO 7
 -----------
+Escribir un programa que calcule la mínima cantidad de billetes (moneda peso argentino) 
+con los que se puede obtener un monto.
+
+Ejemplo: 2320 ARS = (2x1000 ARS + 3x100 ARS + 1x20 ARS)
 */
+int tipos_billetes[] = {1000, 100, 20};
+
+int billetes_min(int ARS){
+    int billetes = 0;
+    if (ARS>=1000){
+        billetes += ARS/1000;
+        ARS = ARS%1000;
+    }
+    if (ARS>=100){
+        billetes += ARS/100;
+        ARS = ARS%100;
+    }
+    if (ARS>=20){
+        billetes += ARS/20;
+        ARS = ARS%20;
+    }
+    return billetes;
+}
 
 /*
 EJERCICIO 8
 -----------
+Escribir una función que implemente el algoritmo de Euclides para calcular el máximo común divisor de 
+dos números N y M, dado por los siguientes pasos:
+- Teniendo N y M, se obtiene R, el resto de la división entera de M/N.
+- Si R es cero, N es el MCD de los valores iniciales.
+- Se reemplaza , M <-- N, N <-- R, y se vuelve al primer paso.
 */
+
+int MCD( int n, int m){
+    int resto = m/n;
+    if (resto == 0){
+        printf("MCD = %i\n", n);
+        return n;
+    }
+    while(n!=0){
+        resto = m % n;
+        m = n;
+        n = resto;
+    }
+
+    return m;
+
+}
 
 /*
 EJERCICIO 9
 -----------
+ (Decisión múltiple) Escribir una función que dado un carácter imprima:
+si el carácter es 'A':
+    "Ada Lovelace"
+si el carácter es 'a':
+    "Alan Turing"
+si el carácter es 'B':
+    "Brian Kernighan"
+si el carácter es 'b':
+    "Bjarne Stroustrup"
+si el carácter es 'D':
+    "Dennis Ritchie
+si el carácter es 'G':
+    "Grace Hopper"
+si el carácter es 'H':
+    "Hedy Lamarr"
+si el carácter es 'I':
+    "Ida Rhodes"
+si el carácter es 'M':
+    "Margaret Hamilton"
+si el carácter es 'm':
+    "Maddog Hall"
+si es otro carácter:
+    "No lo conozco"
 */
+
+void imprimir(char letra){
+    switch (letra){
+        case 'A':
+            puts("Ada Lovelace");
+            break;
+        case 'a':
+            puts("Alan Turing");
+            break;
+        case 'B':
+            puts("Brian Kernighan");
+            break; //! IMP EL BREAK
+        case 'b':
+            puts("Bjarne Stroustrup");
+            break;
+        case 'D':
+            puts("Dennis Ritchie");
+            break;
+        case 'G':
+            puts("Grace Hopper");
+            break;
+        case 'H':
+            puts("Hedy Lamarr");
+            break;
+        case 'I':
+            puts("Ida Rhodes");
+            break;
+        case 'M':
+            puts("Margaret Hamilton");
+            break;
+        case 'm':
+            puts("Maddog Hall");
+            break;
+        default:
+            puts("No lo conozco");  
+}
+}
 
 /*
 EJERCICIO 10
------------
+------------
+Escribir una función que calcule el tiempo que tardarán dos vehículos que están avanzando 
+con la misma dirección pero en sentido contrario en colisionar, conociendo las velocidades 
+de cada uno de ellos (en km/h). 
+La función debe devolver el tiempo calculado y, si este es inferior a 10 minutos, 
+imprimir por pantalla un mensaje que indique que se está en una situación peligrosa.
 */
+
+int tiempo_hasta_colision(float velocidad1, float velocidad2){
+    float tiempo = 0;
+    if (velocidad1 != velocidad2) {
+        tiempo = 60.0 / ((60.0 / velocidad1) + (60.0 / velocidad2));
+    }
+
+    // Convertir el tiempo a minutos
+    float tiempo_en_minutos = tiempo * 60.0;
+
+    // Imprimir mensaje si el tiempo es inferior a 10 minutos
+    if (tiempo_en_minutos < 10.0) {
+        printf("Situación peligrosa!\n");
+    }
+
+    return tiempo_en_minutos;
+}
