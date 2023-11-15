@@ -21,7 +21,7 @@ void stats(float *datos, unsigned int largo, float *media, float *varianza){
 }
 
 int main(void){
-    float*datos;
+    float datos[100];
     unsigned int largo;
     float media, varianza;
 
