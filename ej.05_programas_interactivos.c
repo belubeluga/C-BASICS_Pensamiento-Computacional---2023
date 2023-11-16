@@ -6,6 +6,17 @@
 // Realice las validaciones necesarias.
 // Nota: puede elegir entre NO calcular la raíz de números negativos o mostrar un valor complejo.
 
+int inverso(){
+    int num;
+    scanf("%d", &num);
+    return 1/(num *-1);
+}
+
+int main(void){
+    int x = inverso();
+    printf("%d\n", x);
+    return 0;
+}
 //? EJERCICIO 2
 // Escribir un programa que dado un día del año (1 a 366) ingresado por el usuario, 
 // imprima el día de la semana que le corresponde. Debe suponer que el año comenzó, por ejemplo, un domingo. 
